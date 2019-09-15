@@ -1,0 +1,81 @@
+{% extends "header.html" %}
+{% block navside %}
+
+<div class="page">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="padding: 0;">
+                    <div class="card fcard">
+                        <div class="card-body">
+
+                            <div>
+                            <h3>Running Container</h3>
+                            </div>
+                          <table class="table table-hover">
+                              <tr>
+                                  <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                  <td>ID</td>
+                                  <td>Image</td>
+                                  <td>Port</td>
+                                  <td>Status</td>
+                                  <td>Command</td>
+                                  <td>Name</td>
+                              </tr>
+
+                              {% for i in Containers %}
+                              <tr>
+                                  <th>
+                                      <input type="radio" name="containerID" value="C:{{i[0]}}" />
+                                  </th>
+                                  <td>{{i[0]}}</td>
+                                  <td>{{i[1]}}</td>
+                                  <td>{{i[2]}}</td>
+                                  <td>{{i[3]}}</td>
+                                  <td>{{i[4]}}</td>
+                                  <td>{{i[5]}}</td>
+                              </tr>
+                              {% end %}
+                          </table>
+
+                        </div>
+                            <h3>Local Image List</h3>
+                        <div>
+
+                        <table class="table table-hover">
+                            <tr>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>Image ID</td>
+                                <td>Repository</td>
+                                <td>Tag</td>
+                                <td>Size</td>
+                            </tr>
+                            {% for a in Images %}
+                            <tr>
+                                <th>
+                                    <input type="radio" name="containerID" value="I:{{a[0]}}" />
+                                </th>
+                                <td>{{a[0]}}</td>
+                                <td>{{a[1]}}</td>
+                                <td>{{a[2]}}</td>
+                                <td>{{a[3]}}</td>
+                            </tr>
+                            {% end %}
+                </table>
+
+                <input type="submit" value="检测"  formaction="/detect"/>
+                            <input type="submit" value="查看"  formaction="/view_detect"/>
+
+            </form>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body></html>
+<script src="static/scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="static/scripts/popper.min.js"></script>
+<script src="static/scripts/bootstrap.min.js"></script>
+{% end %}

@@ -1,0 +1,204 @@
+{% extends "header.html" %}
+{% block navside %}
+{% block body %}load(){% end %}
+<div class="page">
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="padding: 0;">
+                    <div class="card fcard">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs nav-justified" id="myTab">
+                                <li class="nav-item">
+                                    <a class="nav-link active" onclick="load()" data-toggle="tab" aria-selected="true">简略</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" onclick="cve_malware()" data-toggle="tab" aria-selected="false">CVE和恶意文件</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" onclick="program()" data-toggle="tab" aria-selected="false">内置程序列表</a>
+                                </li>
+                            </ul>
+                            <br>
+                            <!-- Table -->
+                            <div class="table-responsive">
+                                <div id="info">
+                                <table class="table table-hover">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th scope="col">底层系统</th>
+                                            <th scope="col">系统版本</th>
+                                            <th scope="col">漏洞程序个数</th>
+                                            <th scope="col">恶意文件个数</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>{{info[1]}}</td>
+                                            <td>{{info[2]}}</td>
+                                            <td>{{info[3]}}</td>
+                                            <td>{{info[4]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            <div id="cve_malware">
+                                <h5>CVE漏洞详情</h5>
+                                {% for cve in cve_list %}
+                                <table class="table table-hover">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th scope="col" colspan="3">程序名称</th>
+                                            <th scope="col" colspan="3">程序版本</th>
+                                            <th scope="col" colspan="3">CVE编号</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3">{{cve[1]}}</td>
+                                            <td colspan="3">{{cve[2]}}</td>
+                                            <td colspan="3">{{cve[3]}}</td>
+                                        </tr>
+                                    </tbody>
+                                    <thead class="thead">
+                                        <tr>
+                                            <th scope="col" style="text-align: center">CVSS分数</th>
+                                            <th scope="col" style="text-align: center">攻击途径</th>
+                                            <th scope="col" style="text-align: center">攻击复杂度</th>
+                                            <th scope="col" style="text-align: center">认证</th>
+                                            <th scope="col" style="text-align: center">机密性</th>
+                                            <th scope="col" style="text-align: center">完整性</th>
+                                            <th scope="col" style="text-align: center">可用性</th>
+                                            <th scope="col" style="text-align: center">发布时间</th>
+                                            <th scope="col" style="text-align: center">修改时间</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center">{{cve[4]}}</td>
+                                            <td style="text-align: center">{{cve[5]}}</td>
+                                            <td style="text-align: center">{{cve[6]}}</td>
+                                            <td style="text-align: center">{{cve[7]}}</td>
+                                            <td style="text-align: center">{{cve[8]}}</td>
+                                            <td style="text-align: center">{{cve[9]}}</td>
+                                            <td style="text-align: center">{{cve[10]}}</td>
+                                            <td style="text-align: center">{{cve[11]}}</td>
+                                            <td style="text-align: center">{{cve[12]}}</td>
+                                        </tr>
+                                    </tbody>
+
+                                <thead >
+                                        <tr>
+                                            <th colspan="9" style="text-align: center">CVE漏洞详情</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="9">{{cve[13]}}</td>
+
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                 <div style="width:100%;margin:0 auto;padding:0 200px; border-top:3px solid #ddd" ></div>
+                                {% end %}
+                                <br><br>
+                                <h5>恶意文件检测</h5>
+                                <table class="table table-hover">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th scope="col">文件路径</th>
+                                            <th scope="col">文件MD5</th>
+                                            <th scope="col">恶意类型</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for item in malware_list %}
+                                        <tr>
+                                            <td>{{item[1]}}</td>
+                                            <td>{{item[2]}}</td>
+                                            <td>{{item[3]}}</td>
+                                        </tr>
+                                        {% end %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div id="program">
+                                <table class="table table-hover">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th scope="col">程序名称</th>
+                                            <th scope="col">程序版本</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for item in program_list %}
+                                        <tr>
+                                            <td>{{item[1]}}</td>
+                                            <td>{{item[2]}}</td>
+                                        </tr>
+                                        {% end %}
+                                    </tbody>
+                                </table>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="static/scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="static/scripts/popper.min.js"></script>
+<script src="static/scripts/bootstrap.min.js"></script>
+<script>
+
+    function load() {
+    //隐藏首页信息
+    document.getElementById("info").style.display="block";
+    //隐藏首页信息
+    document.getElementById("cve_malware").style.display="none";
+    //隐藏首页信息
+    document.getElementById("program").style.display="none";
+
+
+}
+function cve_malware() {
+    //隐藏首页信息
+    document.getElementById("info").style.display="none";
+    //隐藏首页信息
+    document.getElementById("cve_malware").style.display="block";
+    //隐藏首页信息
+    document.getElementById("program").style.display="none";
+
+
+}
+
+function program() {
+        document.getElementById("info").style.display="none";
+    //隐藏首页信息
+    document.getElementById("cve_malware").style.display="none";
+    //隐藏首页信息
+    document.getElementById("program").style.display="block";
+}
+</script>
+</body>
+
+</html>
+{% end %}

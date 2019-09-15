@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/all.css">
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/scripts/script.js"></script>
+    <meta name="description" content="">
+    <meta name="keywords" content="docker, container">
+    <meta name="author" content="Delu huang">
+
+    <title>Docker</title>
+
+</head>
+
+<body  onload="{% block body %}{% end %}">
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="content">
+                {% block navtop %}
+                <br>
+                    <li>
+                        <a href="/">
+                            <img src="static/img/liman-mini.png" alt="liman">
+                            <div>首页</div>
+                        </a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="/containers">
+                            <i class="fas fa-server"></i>
+                            <div>容器信息</div>
+                        </a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="/stats">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <div>容器运行</div>
+                        </a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="/images">
+                            <i class="far fa-clone"></i>
+                            <div>镜像信息</div>
+                        </a>
+                    </li>
+                <br>
+                    <li>
+                        <a href="/hisory">
+                            <i class="far fa-hdd"></i>
+                            <div>检测历史</div>
+                        </a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="/networks">
+                            <i class="zmdi zmdi-portable-wifi"></i>
+                        </a>
+                    </li>
+                </ul>
+                <br>
+
+            </div>
+        </div>
+        {%end%}
+        {% block navside %}{% end %}
+    </div>
+</body>
+</html>

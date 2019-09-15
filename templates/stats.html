@@ -1,0 +1,179 @@
+{% extends "header.html" %}
+{% block navside %}
+<div class="page">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="padding: 0;">
+                    <div class="card fcard">
+                        <div class="card-body">
+
+                            {% for item in result %}
+
+                            <h4>ContainerID:{{item[0]}}</h4>
+                                <table class="table table-hover" >
+                                    <thead class="thead bg-ee">
+                                        <tr>
+                                            <th scope="col">CPU %</th>
+                                            <th scope="col">Mem %</th>
+                                            <th scope="col">Mem Usage</th>
+                                            <th scope="col">Mem Limit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="{{item[0]}}_cpu_p">{{item[1]}}%</td>
+                                            <td id="{{item[0]}}_mem_p">{{round(float(item[2]/1024/1024/item[3])*100,2)}}%</td>
+                                            <td id="{{item[0]}}_mem_t">{{round(float(item[2])/1024/1024,2)}}MiB</td>
+                                            <td id="{{item[0]}}_mem_l">{{item[3]}}MiB</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                        <h5>Process</h5>
+                                        <table class="table table-hover" id="{{item[0]}}_process_list">
+                                                <tr>
+                                                    <th >UID</th>
+                                                    <th >PID</th>
+                                                    <th >PPID</th>
+                                                    <th >C</th>
+                                                    <th >STIME</th>
+                                                    <th >TTY</th>
+                                                    <th >TIME</th>
+                                                    <th >CMD</th>
+                                                </tr>
+                                            <tbody id="{{item[0]}}_process">
+                                                {% for process in item[4]%}
+                                                    <tr>
+                                                        <td>{{process[0]}}</td>
+                                                        <td>{{process[1]}}</td>
+                                                        <td>{{process[2]}}</td>
+                                                        <td>{{process[3]}}</td>
+                                                        <td>{{process[4]}}</td>
+                                                        <td>{{process[5]}}</td>
+                                                        <td>{{process[6]}}</td>
+                                                        <td>{{process[7]}}</td>
+                                                    </tr>
+                                                 {% end %}
+                                            </tbody>
+                                        </table>
+                                            <br/><br/><br/>
+                                    {%end%}
+                                    </tbody>
+                                </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+ function load() {
+   //步骤一:创建异步对象
+        var ajax = new XMLHttpRequest();
+        //步骤二:设置请求的url参数,参数一是请求的类型,参数二是请求的url,可以带参数,动态的传递参数starName到服务端
+        ajax.open('get','/getstat');
+        //步骤三:发送请求
+        ajax.send();
+        //步骤四:注册事件 onreadystatechange 状态改变就会调用
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState==4 &&ajax.status==200)
+            {
+                    //步骤五 如果能够进到这个判断 说明 数据 完美的回来了,并且请求的页面是存在的
+    　　　　        responsedata = ajax.responseText;//输入相应的内容
+                    result = JSON.parse(responsedata);
+                    for (var i=0;i<result.length;i++)
+                    {
+                        //刷新监控数据
+                        document.getElementById(result[i].id+"_cpu_p").innerHTML=result[i].cpu_p+"%";
+                        document.getElementById(result[i].id+"_mem_p").innerHTML=result[i].mem_p+"%";
+                        document.getElementById(result[i].id+"_mem_t").innerHTML=result[i].mem_u+"MiB";
+                        document.getElementById(result[i].id+"_mem_l").innerHTML=result[i].mem_t+"MiB";
+
+                        //删除原来的进程表格
+                        var result_node = document.getElementById(result[i].id + "_process_list");
+                        var process_node = document.getElementById(result[i].id + "_process");
+                        result_node.removeChild(process_node);
+
+                        //新的进程列表
+
+                        //存储进程节点
+                        var process_node = document.createElement("tbody");
+                        process_node.id = result[i].id + "_process";
+
+
+                        //挂载到父节点
+                        var parent = document.getElementById(result[i].id + "_process_list");
+                        parent.appendChild(process_node);
+
+                        //进程列表
+                        var process_list = result[i].process;
+                        for (item in process_list)
+                        {
+                            var process_tr_node = document.createElement("tr");
+                            process_node.appendChild(process_tr_node);
+
+                            var uid_node=document.createElement("td");
+                            var uid=document.createTextNode(process_list[item][0]);
+                            uid_node.appendChild(uid);
+
+                            var pid_node=document.createElement("td");
+                            var pid=document.createTextNode(process_list[item][1]);
+                            pid_node.appendChild(pid);
+
+                            var ppid_node=document.createElement("td");
+                            var ppid=document.createTextNode(process_list[item][2]);
+                            ppid_node.appendChild(ppid);
+
+                            var C_node=document.createElement("td");
+                            var C=document.createTextNode(process_list[item][3]);
+                            C_node.appendChild(C);
+
+                            var STIME_node=document.createElement("td");
+                            var STIME=document.createTextNode(process_list[item][4]);
+                            STIME_node.appendChild(STIME);
+
+                            var tty_node=document.createElement("td");
+                            var tty=document.createTextNode(process_list[item][5]);
+                            tty_node.appendChild(tty);
+
+                            var time_node=document.createElement("td");
+                            var time=document.createTextNode(process_list[item][6]);
+                            time_node.appendChild(time);
+
+                            var cmd_node=document.createElement("td");
+                            var cmd=document.createTextNode(process_list[item][7]);
+                            cmd_node.appendChild(cmd);
+
+                            process_tr_node.appendChild(uid_node);
+                            process_tr_node.appendChild(pid_node);
+                            process_tr_node.appendChild(ppid_node);
+                            process_tr_node.appendChild(C_node);
+                            process_tr_node.appendChild(STIME_node);
+                            process_tr_node.appendChild(tty_node);
+                            process_tr_node.appendChild(time_node);
+                            process_tr_node.appendChild(cmd_node);
+
+
+
+                        }
+
+
+                    }
+            }
+        }
+ }
+
+ var timer = setInterval(load,5000);
+</script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="static/scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="static/scripts/popper.min.js"></script>
+<script src="static/scripts/bootstrap.min.js"></script>
+</body>
+
+</html>
+{% end %}

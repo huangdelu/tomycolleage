@@ -1,0 +1,71 @@
+2019-04-29 16:37:57,147 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:39:22,147 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:40:44,701 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:41:36,558 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:42:28,357 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:45:03,513 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:45:26,658 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:46:00,725 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:55:02,041 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:55:57,781 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:56:23,668 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 16:56:42,141 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 17:11:21,688 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 17:11:23,613 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 17:11:28,633 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 17:11:30,035 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 17:12:16,610 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 17:12:20,348 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 17:12:22,054 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 17:12:41,645 - Client - INFO - 223.129.4.82 访问start.html
+2019-04-29 18:58:43,875 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 18:59:21,227 - Client.sub - ERROR - 容器压缩文件发送失败:
+2019-04-29 18:59:21,416 - Client - ERROR - 容器压缩文件上传失败!
+
+2019-04-29 19:00:58,299 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 19:01:05,307 - Client.sub - ERROR - 镜像压缩文件发送失败:HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /file (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2eae8c0c50>: Failed to establish a new connection: [Errno 111] Connection refused',))
+2019-04-29 19:01:05,311 - Client - ERROR - 镜像压缩文件上传失败!
+
+2019-04-29 19:19:49,054 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 19:22:37,303 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 19:32:20,531 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 19:35:50,114 - Client - ERROR - search info error:global name 'infosql' is not defined
+2019-04-29 20:46:27,913 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 21:26:21,538 - Client - ERROR - search cve data error:'int' object is not iterable
+2019-04-29 21:26:56,859 - Client - ERROR - search cve data error:'int' object is not iterable
+2019-04-29 21:27:37,228 - Client - ERROR - search cve data error:'tuple' object does not support item assignment
+2019-04-29 21:28:15,919 - Client - ERROR - search cve data error:'tuple' object does not support item assignment
+2019-04-29 21:29:35,000 - Client - ERROR - search cve data error:'tuple' object does not support item assignment
+2019-04-29 21:32:32,546 - Client - ERROR - search cve data error:'tuple' object does not support item assignment
+2019-04-29 21:34:12,516 - Client - ERROR - search cve data error:map() requires at least two args
+2019-04-29 21:34:49,502 - Client - ERROR - search cve data error:map() requires at least two args
+2019-04-29 21:35:32,293 - Client - ERROR - search cve data error:map() requires at least two args
+2019-04-29 21:36:38,828 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 21:40:56,256 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 21:41:24,218 - Client - ERROR - search info error:no such table: info
+2019-04-29 21:41:24,218 - Client - ERROR - search cve data error:no such table: CVE
+2019-04-29 21:41:24,218 - Client - ERROR - search malware data error:no such table: malware
+2019-04-29 21:41:24,218 - Client - ERROR - search program data error:no such table: program
+2019-04-29 21:45:22,915 - Client - INFO - 223.129.4.216 访问start.html
+2019-04-29 22:05:00,515 - Client - INFO - 125.71.200.9 访问start.html
+2019-04-29 22:05:02,848 - Client - INFO - 125.71.200.9 访问start.html
+2019-04-29 22:58:19,114 - Client.sub - ERROR - 容器压缩文件发送失败:
+2019-04-29 22:58:21,416 - Client - ERROR - 容器压缩文件上传失败!
+
+2019-04-29 23:06:48,231 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-29 23:09:29,076 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-29 23:10:52,430 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-29 23:13:11,157 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-29 23:16:12,154 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-29 23:20:48,366 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-29 23:22:05,042 - Client - INFO - 182.150.36.26 访问start.html
+2019-04-29 23:22:31,834 - Client - INFO - 182.150.36.26 访问start.html
+2019-04-29 23:22:34,857 - Client - INFO - 182.150.36.26 访问start.html
+2019-04-29 23:29:11,479 - Client.sub - ERROR - 镜像压缩文件发送失败:
+2019-04-29 23:29:11,575 - Client - ERROR - 镜像压缩文件上传失败!
+
+2019-04-29 23:29:57,738 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-30 09:10:57,960 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-30 09:12:18,312 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-30 10:32:34,333 - Client - ERROR - occur error :'NoneType' object is not iterable
+2019-04-30 11:07:36,876 - Client - ERROR - occur error :'NoneType' object is not iterable
